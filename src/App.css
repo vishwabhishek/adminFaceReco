@@ -36,3 +36,44 @@
     transform: rotate(360deg);
   }
 }
+
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main Layout */
+.app-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+}
+
+.app-container {
+  flex: 1;
+  min-width: 0;
+  margin-left: 250px; /* Match sidebar width */
+  background-color: #f9fafb;
+  min-height: 100vh;
+  position: relative;
+}
+
+.content-area {
+  padding: 2rem;
+  margin-top: 64px; /* Match header height */
+  min-height: calc(100vh - 64px);
+  width: 100%;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .app-container {
+    margin-left: 0;
+  }
+  
+  .content-area {
+    padding: 1rem;
+  }
+}

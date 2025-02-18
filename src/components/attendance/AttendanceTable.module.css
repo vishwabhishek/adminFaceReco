@@ -1,0 +1,129 @@
+/* Attendance Table Styles */
+.container {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.tableHeader {
+    background-color: #60A5FA;
+    color: #FFFFFF;
+}
+
+.tableHeader th {
+    padding: 1rem;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 2px solid #E5E7EB;
+}
+
+.tableHeader th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.tableHeader th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.tableRow {
+    transition: background-color 0.2s ease;
+}
+
+.tableRow:nth-child(even) {
+    background-color: #F9FAFB;
+}
+
+.tableRow:nth-child(odd) {
+    background-color: #FFFFFF;
+}
+
+.tableRow:hover {
+    background-color: #F3F4F6;
+}
+
+.tableCell {
+    padding: 1rem;
+    color: #1F2937;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+/* Status Badges */
+.statusBadge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.present {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10B981;
+}
+
+.absent {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+}
+
+.late {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #F59E0B;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.paginationButton {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    color: #1F2937;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.paginationButton:hover {
+    background-color: #F3F4F6;
+}
+
+.paginationButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.active {
+    background-color: #60A5FA;
+    color: #FFFFFF;
+    border-color: #60A5FA;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+        overflow-x: auto;
+    }
+    
+    .tableCell {
+        padding: 0.75rem;
+    }
+}
