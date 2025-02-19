@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { 
-  DocumentDownloadIcon,
-  DocumentTextIcon,
-  TableIcon 
-} from '@heroicons/react/outline';
+  HiDocumentDownload,
+  HiDocument,
+  HiTable 
+} from 'react-icons/hi';
 import styles from './ReportGenerator.module.css';
 
 const ReportGenerator = () => {
@@ -49,17 +49,17 @@ const ReportGenerator = () => {
         className={styles.generateButton}
         onClick={handleGenerateReport}
       >
-        <DocumentDownloadIcon className="w-5 h-5" />
+        <HiDocumentDownload className="w-5 h-5" />
         Generate Report
       </button>
 
       <div className={styles.exportOptions}>
         <button className={`${styles.exportButton} ${styles.pdf}`}>
-          <DocumentTextIcon className="w-5 h-5" />
+          <HiDocument className="w-5 h-5" />
           Export as PDF
         </button>
         <button className={`${styles.exportButton} ${styles.excel}`}>
-          <TableIcon className="w-5 h-5" />
+          <HiTable className="w-5 h-5" />
           Export as Excel
         </button>
       </div>

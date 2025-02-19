@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SearchIcon, FilterIcon } from '@heroicons/react/outline';
+import { HiSearch, HiFilter } from 'react-icons/hi';
 import styles from './SearchAndFilter.module.css';
 
 const SearchAndFilter = ({ onSearch, onFilter }) => {
@@ -28,7 +28,7 @@ const SearchAndFilter = ({ onSearch, onFilter }) => {
     <div className={styles.searchFilterContainer}>
       <form onSubmit={handleSearch} className={styles.searchForm}>
         <div className={styles.searchBox}>
-          <SearchIcon className={styles.searchIcon} />
+          <HiSearch className={styles.searchIcon} />
           <input
             type="text"
             placeholder="Search employees..."
@@ -84,7 +84,7 @@ const SearchAndFilter = ({ onSearch, onFilter }) => {
           </div>
 
           <button type="submit" className={styles.applyButton}>
-            <FilterIcon className={styles.filterIcon} />
+            <HiFilter className={styles.filterIcon} />
             Apply Filters
           </button>
         </div>

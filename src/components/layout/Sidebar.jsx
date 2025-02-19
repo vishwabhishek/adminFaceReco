@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { 
-  HomeIcon, 
-  UserGroupIcon, 
-  DocumentReportIcon, 
-  CogIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  LogoutIcon
-} from '@heroicons/react/outline';
+  AiOutlineHome,
+  AiOutlineTeam,
+  AiOutlineFileText,
+  AiOutlineLeft,
+  AiOutlineRight
+} from 'react-icons/ai';
 import styles from './Sidebar.module.css';
 
 const Sidebar = ({ onCollapse }) => {
@@ -17,9 +15,9 @@ const Sidebar = ({ onCollapse }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const menuItems = [
-    { title: 'Dashboard', path: '/', icon: HomeIcon },
-    { title: 'Attendance', path: '/attendance', icon: UserGroupIcon },
-    { title: 'Reports', path: '/reports', icon: DocumentReportIcon },
+    { title: 'Dashboard', path: '/', icon: AiOutlineHome },
+    { title: 'Attendance', path: '/attendance', icon: AiOutlineTeam },
+    { title: 'Reports', path: '/reports', icon: AiOutlineFileText },
   ];
 
   const toggleSidebar = () => {
@@ -37,7 +35,7 @@ const Sidebar = ({ onCollapse }) => {
           onClick={toggleSidebar}
           aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          {isCollapsed ? <ChevronRightIcon className={styles.navIcon} /> : <ChevronLeftIcon className={styles.navIcon} />}
+          {isCollapsed ? <AiOutlineRight className={styles.navIcon} /> : <AiOutlineLeft className={styles.navIcon} />}
         </button>
       </div>
       
@@ -58,21 +56,6 @@ const Sidebar = ({ onCollapse }) => {
           );
         })}
       </nav>
-
-      <div className={styles.sidebarFooter}>
-        <Link
-          to="/settings"
-          className={`${styles.navItem} ${location.pathname === '/settings' ? styles.active : ''}`}
-          title={isCollapsed ? 'Settings' : ''}
-        >
-          <CogIcon className={styles.navIcon} />
-          {!isCollapsed && <span className={styles.navText}>Settings</span>}
-        </Link>
-        <button className={styles.navItem}>
-          <LogoutIcon className={styles.navIcon} />
-          {!isCollapsed && <span className={styles.navText}>Logout</span>}
-        </button>
-      </div>
     </div>
   );
 };

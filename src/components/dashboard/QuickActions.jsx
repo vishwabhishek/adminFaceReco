@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import {
-  PlusIcon,
-  DocumentReportIcon,
-  ClockIcon,
-  UserAddIcon,
-  XIcon
-} from '@heroicons/react/outline';
+  HiPlus,
+  HiDocument,
+  HiClock,
+  HiUserAdd,
+  HiX
+} from 'react-icons/hi';
 import styles from './QuickActions.module.css';
 
 const QuickActions = () => {
@@ -14,19 +14,19 @@ const QuickActions = () => {
   const actions = [
     {
       id: 'add-employee',
-      icon: UserAddIcon,
+      icon: HiUserAdd,
       label: 'Add Employee',
       onClick: () => console.log('Add Employee clicked')
     },
     {
       id: 'generate-report',
-      icon: DocumentReportIcon,
+      icon: HiDocument,
       label: 'Generate Report',
       onClick: () => console.log('Generate Report clicked')
     },
     {
       id: 'view-logs',
-      icon: ClockIcon,
+      icon: HiClock,
       label: 'View Logs',
       onClick: () => console.log('View Logs clicked')
     }
@@ -39,9 +39,9 @@ const QuickActions = () => {
         onClick={() => setIsExpanded(!isExpanded)}
       >
         {isExpanded ? (
-          <XIcon className={styles.buttonIcon} />
+          <HiX className={styles.buttonIcon} />
         ) : (
-          <PlusIcon className={styles.buttonIcon} />
+          <HiPlus className={styles.buttonIcon} />
         )}
       </button>
 

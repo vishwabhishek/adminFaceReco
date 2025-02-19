@@ -1,9 +1,8 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
-import AttendanceTable from './components/attendance/AttendanceTable';
-import ReportGenerator from './components/reports/ReportGenerator';
-import Settings from './components/settings/Settings';
+import Attendance from './components/attendance/Attendance';
+import Reports from './components/reports/Reports';
 import Profile from './pages/Profile/Profile';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
@@ -57,30 +56,25 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }
       />
+      
       <Route
         path="/attendance"
         element={
           <ProtectedRoute>
-            <AttendanceTable />
+            <Attendance />
           </ProtectedRoute>
         }
       />
+      
       <Route
         path="/reports"
         element={
           <ProtectedRoute>
-            <ReportGenerator />
+            <Reports />
           </ProtectedRoute>
         }
       />
-      <Route
-        path="/settings"
-        element={
-          <ProtectedRoute>
-            <Settings />
-          </ProtectedRoute>
-        }
-      />
+      
       <Route
         path="/profile"
         element={

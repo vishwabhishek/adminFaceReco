@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { 
-  ChevronLeftIcon, 
-  ChevronRightIcon,
-  CheckCircleIcon,
-  XCircleIcon,
-  ClockIcon
-} from '@heroicons/react/outline';
+  HiChevronLeft, 
+  HiChevronRight,
+  HiCheckCircle,
+  HiXCircle,
+  HiClock
+} from 'react-icons/hi';
 import styles from './AttendanceTable.module.css';
 
 const AttendanceTable = () => {
@@ -20,9 +20,9 @@ const AttendanceTable = () => {
 
   const StatusBadge = ({ status }) => {
     const statusConfig = {
-      present: { icon: CheckCircleIcon, className: styles.present },
-      absent: { icon: XCircleIcon, className: styles.absent },
-      late: { icon: ClockIcon, className: styles.late },
+      present: { icon: HiCheckCircle, className: styles.present },
+      absent: { icon: HiXCircle, className: styles.absent },
+      late: { icon: HiClock, className: styles.late },
     };
 
     const { icon: Icon, className } = statusConfig[status];
@@ -66,14 +66,14 @@ const AttendanceTable = () => {
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
-          <ChevronLeftIcon className="w-5 h-5" />
+          <HiChevronLeft className="w-5 h-5" />
         </button>
         <span className={`${styles.paginationButton} ${styles.active}`}>{currentPage}</span>
         <button 
           className={styles.paginationButton}
           onClick={() => setCurrentPage(prev => prev + 1)}
         >
-          <ChevronRightIcon className="w-5 h-5" />
+          <HiChevronRight className="w-5 h-5" />
         </button>
       </div>
     </div>

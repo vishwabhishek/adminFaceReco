@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { XIcon } from '@heroicons/react/outline';
+import { HiX } from 'react-icons/hi';
 
 const Modal = ({ 
   isOpen, 
@@ -28,7 +28,7 @@ const Modal = ({
             className="close-button"
             onClick={onClose}
           >
-            <XIcon className="w-6 h-6" />
+            <HiX className="w-6 h-6" />
           </button>
         </div>
 

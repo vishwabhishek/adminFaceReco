@@ -5,11 +5,11 @@ import AttendanceHeatmap from '../components/dashboard/AttendanceHeatmap';
 import QuickActions from '../components/dashboard/QuickActions';
 import AttendanceTable from '../components/attendance/AttendanceTable';
 import { 
-  UserGroupIcon, 
-  UserIcon, 
-  ClockIcon, 
-  XCircleIcon 
-} from '@heroicons/react/outline';
+  AiOutlineTeam,
+  AiOutlineUser,
+  AiOutlineClockCircle,
+  AiOutlineClose
+} from 'react-icons/ai';
 import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
@@ -21,28 +21,28 @@ const Dashboard = () => {
       title: 'Total Employees',
       value: '150',
       description: 'Active employees in the system',
-      icon: UserGroupIcon,
+      icon: AiOutlineTeam,
       type: 'total'
     },
     {
       title: 'Present Today',
       value: '132',
       description: '88% attendance rate',
-      icon: UserIcon,
+      icon: AiOutlineUser,
       type: 'present'
     },
     {
       title: 'Late Arrivals',
       value: '8',
       description: '5.3% of total employees',
-      icon: ClockIcon,
+      icon: AiOutlineClockCircle,
       type: 'late'
     },
     {
       title: 'Absent Today',
       value: '10',
       description: '6.7% of total employees',
-      icon: XCircleIcon,
+      icon: AiOutlineClose,
       type: 'absent'
     }
   ];
