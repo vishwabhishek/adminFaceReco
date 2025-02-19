@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DashboardCard from '../components/dashboard/DashboardCard';
+import SearchAndFilter from '../components/dashboard/SearchAndFilter';
+import AttendanceHeatmap from '../components/dashboard/AttendanceHeatmap';
+import QuickActions from '../components/dashboard/QuickActions';
 import AttendanceTable from '../components/attendance/AttendanceTable';
 import { 
   UserGroupIcon, 
@@ -10,6 +13,9 @@ import {
 import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filters, setFilters] = useState({});
+
   const dashboardStats = [
     {
       title: 'Total Employees',
@@ -41,11 +47,22 @@ const Dashboard = () => {
     }
   ];
 
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+    // Implement search logic
+  };
+
+  const handleFilter = (filterData) => {
+    setFilters(filterData);
+    // Implement filter logic
+  };
+
   return (
     <div className={styles.dashboard}>
-      <h1 className="text-2xl font-semibold text-gray-900 mb-6">
-        Dashboard Overview
-      </h1>
+      <div className={styles.dashboardHeader}>
+        <h1 className={styles.dashboardTitle}>Dashboard Overview</h1>
+      </div>
+
       <div className={styles.statsGrid}>
         {dashboardStats.map((stat, index) => (
           <DashboardCard
@@ -58,10 +75,23 @@ const Dashboard = () => {
           />
         ))}
       </div>
+
+      <SearchAndFilter 
+        onSearch={handleSearch}
+        onFilter={handleFilter}
+      />
+
+      <AttendanceHeatmap />
+
       <div className={styles.attendanceSection}>
         <h2 className={styles.sectionTitle}>Recent Attendance</h2>
-        <AttendanceTable />
+        <AttendanceTable 
+          searchTerm={searchTerm}
+          filters={filters}
+        />
       </div>
+
+      <QuickActions />
     </div>
   );
 };

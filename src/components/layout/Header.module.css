@@ -2,12 +2,17 @@
 .header {
     background-color: #FFFFFF;
     height: 64px;
-    width: 100%;
+    width: calc(100% - 240px); /* Account for sidebar width */
     border-bottom: 1px solid #E5E7EB;
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 50;
+    z-index: 40; /* Lower than sidebar */
+    transition: width 0.3s ease;
+}
+
+.headerExpanded {
+    width: calc(100% - 64px); /* Account for collapsed sidebar width */
 }
 
 .headerContent {
@@ -258,12 +263,23 @@
 }
 
 .logoutButton {
-    color: #EF4444;
+  color: #ef4444 !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.logoutButton:hover {
+  background-color: #fef2f2 !important;
 }
 
 .logoutIcon {
-    width: 1.25rem;
-    height: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 /* Responsive Design */

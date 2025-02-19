@@ -1,36 +1,43 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { useAuth } from './context/AuthContext';
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
-import Dashboard from './pages/Dashboard';
-import AttendanceTable from './components/attendance/AttendanceTable';
-import ReportGenerator from './components/reports/ReportGenerator';
-import Settings from './components/settings/Settings';
-import './App.css';
+import AppRoutes from './routes';
+import styles from './App.module.css';
 
-function App() {
+const AppContent = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   const handleSidebarCollapse = (collapsed) => {
     setIsSidebarCollapsed(collapsed);
   };
 
+  if (!isAuthenticated()) {
+    return <AppRoutes />;
+  }
+
+  return (
+    <div className="app-container">
+      <Sidebar onCollapse={handleSidebarCollapse} />
+      <div className={`main-content ${isSidebarCollapsed ? 'expanded' : ''}`}>
+        <Header isSidebarCollapsed={isSidebarCollapsed} />
+        <main className="content-wrapper">
+          <AppRoutes />
+        </main>
+      </div>
+    </div>
+  );
+};
+
+function App() {
   return (
     <Router>
-      <div className="app-wrapper">
-        <Sidebar onCollapse={handleSidebarCollapse} />
-        <div className={`app-container ${isSidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-          <Header />
-          <main className="content-area">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/attendance" element={<AttendanceTable />} />
-              <Route path="/reports" element={<ReportGenerator />} />
-              <Route path="/settings" element={<Settings />} />
-            </Routes>
-          </main>
-        </div>
-      </div>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
     </Router>
   );
 }
