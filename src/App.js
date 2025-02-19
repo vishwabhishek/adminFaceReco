@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
@@ -9,11 +9,17 @@ import Settings from './components/settings/Settings';
 import './App.css';
 
 function App() {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  const handleSidebarCollapse = (collapsed) => {
+    setIsSidebarCollapsed(collapsed);
+  };
+
   return (
     <Router>
       <div className="app-wrapper">
-        <Sidebar />
-        <div className="app-container">
+        <Sidebar onCollapse={handleSidebarCollapse} />
+        <div className={`app-container ${isSidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
           <Header />
           <main className="content-area">
             <Routes>

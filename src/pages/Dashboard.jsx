@@ -5,8 +5,9 @@ import {
   UserGroupIcon, 
   UserIcon, 
   ClockIcon, 
-  ExclamationIcon 
+  XCircleIcon 
 } from '@heroicons/react/outline';
+import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
   const dashboardStats = [
@@ -15,7 +16,7 @@ const Dashboard = () => {
       value: '150',
       description: 'Active employees in the system',
       icon: UserGroupIcon,
-      type: 'present'
+      type: 'total'
     },
     {
       title: 'Present Today',
@@ -35,18 +36,17 @@ const Dashboard = () => {
       title: 'Absent Today',
       value: '10',
       description: '6.7% of total employees',
-      icon: ExclamationIcon,
+      icon: XCircleIcon,
       type: 'absent'
     }
   ];
 
   return (
-    <div className="p-6">
+    <div className={styles.dashboard}>
       <h1 className="text-2xl font-semibold text-gray-900 mb-6">
         Dashboard Overview
       </h1>
-
-      <div className="dashboard-cards">
+      <div className={styles.statsGrid}>
         {dashboardStats.map((stat, index) => (
           <DashboardCard
             key={index}
@@ -58,11 +58,8 @@ const Dashboard = () => {
           />
         ))}
       </div>
-
-      <div className="mt-8">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
-          Recent Attendance
-        </h2>
+      <div className={styles.attendanceSection}>
+        <h2 className={styles.sectionTitle}>Recent Attendance</h2>
         <AttendanceTable />
       </div>
     </div>
